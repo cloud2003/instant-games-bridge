@@ -10,6 +10,7 @@ export const PLATFORM_ID = {
     WORTAL: 'wortal',
     PLAYDECK: 'playdeck',
     TELEGRAM: 'telegram',
+    Y8: 'y8',
     MOCK: 'mock',
 }
 

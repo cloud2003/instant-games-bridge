@@ -36,6 +36,7 @@ import PlaygamaPlatformBridge from './platform-bridges/PlaygamaPlatformBridge'
 import PlayDeckPlatformBridge from './platform-bridges/PlayDeckPlatformBridge'
 import WortalPlatformBridge from './platform-bridges/WortalPlatformBridge'
 import TelegramPlatformBridge from './platform-bridges/TelegramPlatformBridge'
+import Y8PlatformBridge from './platform-bridges/Y8PlatformBridge'
 
 class InstantGamesBridge {
     get version() {
@@ -201,6 +202,8 @@ class InstantGamesBridge {
                 platformId = PLATFORM_ID.PLAYDECK
             } else if (url.hash.includes('tgWebAppData')) {
                 platformId = PLATFORM_ID.TELEGRAM
+            } else if (url.hash.includes('y8')) {
+                platformId = PLATFORM_ID.Y8
             }
         }
 
@@ -268,6 +271,12 @@ class InstantGamesBridge {
             case PLATFORM_ID.TELEGRAM: {
                 this.#platformBridge = new TelegramPlatformBridge(
                     this._options && this._options.platforms && this._options.platforms[PLATFORM_ID.TELEGRAM],
+                )
+                break
+            }
+            case PLATFORM_ID.Y8: {
+                this.#platformBridge = new Y8PlatformBridge(
+                    this._options && this._options.platforms && this._options.platforms[PLATFORM_ID.Y8],
                 )
                 break
             }
